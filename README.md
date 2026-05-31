@@ -61,6 +61,26 @@ npx playwright test --debug
 npx playwright show-report
 ```
 
+## Test Cases
+
+### VWO Login — Invalid Credentials (`tests/login.invalid-credentials.spec.ts`)
+
+Recorded and ran using **playwright-cli** browser automation tool against [app.vwo.com](https://app.vwo.com).
+
+**Scenario:** Submit login form with invalid email and password, verify error response.
+
+**Tests:**
+- `shows error on wrong email and password` — asserts `#js-notification-box` is visible with text _"Your email, password, IP address or location did not match"_
+- `stays on login page after failed attempt` — asserts URL remains on `/#/login`
+- `email field retains value after failed attempt` — asserts email input keeps entered value
+
+**Run:**
+```bash
+npx playwright test tests/login.invalid-credentials.spec.ts --workers=1 --project=chromium
+```
+
+---
+
 ## Project Structure
 
 ```
